@@ -43,7 +43,8 @@ app.get('/', async (req, res) => {
     const searchParams = {
         names: req.query.names ? (Array.isArray(req.query.names) ? req.query.names : [req.query.names]) : [],
         minPrice: req.query.minPrice || '',
-        maxPrice: req.query.maxPrice || ''
+        maxPrice: req.query.maxPrice || '',
+        excludeSoldOut: req.query.excludeSoldOut === 'true'
     };
 
     try {

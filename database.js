@@ -178,30 +178,44 @@ function searchProducts(params, callback) {
 // 전체 상품 수 조회
 function getTotalProductCount(params = {}) {
     return new Promise((resolve, reject) => {
-        let query = "SELECT COUNT(*) as count FROM products WHERE 1=1";
-        const queryParams = [];
+        let conditions = [];
+        let values = [];
 
+        // 검색어 조건 추가
         if (params.names && params.names.length > 0) {
-            const nameConditions = params.names.map(() => "product_name LIKE ?").join(" AND ");
-            query += ` AND (${nameConditions})`;
-            params.names.forEach(name => {
-                queryParams.push(`%${name}%`);
+            const nameConditions = params.names.map(name => {
+                values.push(`%${name}%`);
+                return `(product_name LIKE ? OR brand LIKE ?)`;
             });
+            conditions.push(`(${nameConditions.join(' AND ')})`);
+            // 각 검색어에 대해 values를 한 번 더 추가 (brand LIKE 조건을 위해)
+            params.names.forEach(name => values.push(`%${name}%`));
         }
 
+        // 가격 범위 조건 추가
         if (params.minPrice) {
-            query += " AND sale_price >= ?";
-            queryParams.push(parseInt(params.minPrice));
+            conditions.push('sale_price >= ?');
+            values.push(params.minPrice);
         }
-
         if (params.maxPrice) {
-            query += " AND sale_price <= ?";
-            queryParams.push(parseInt(params.maxPrice));
+            conditions.push('sale_price <= ?');
+            values.push(params.maxPrice);
         }
 
-        db.get(query, queryParams, (err, row) => {
-            if (err) reject(err);
-            else resolve(row.count);
+        // 품절 상품 제외 조건 추가
+        if (params.excludeSoldOut) {
+            conditions.push('(stock_number IS NULL OR stock_number != "1")');
+        }
+
+        const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
+        const query = `SELECT COUNT(*) as count FROM products ${whereClause}`;
+
+        db.get(query, values, (err, row) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve(row.count);
         });
     });
 }
@@ -209,34 +223,53 @@ function getTotalProductCount(params = {}) {
 // 페이징된 상품 조회
 function getProductsWithPaging(page = 1, pageSize = 20, params = {}) {
     return new Promise((resolve, reject) => {
-        let query = "SELECT * FROM products WHERE 1=1";
-        const queryParams = [];
+        const offset = (page - 1) * pageSize;
+        let conditions = [];
+        let values = [];
 
+        // 검색어 조건 추가
         if (params.names && params.names.length > 0) {
-            const nameConditions = params.names.map(() => "product_name LIKE ?").join(" AND ");
-            query += ` AND (${nameConditions})`;
-            params.names.forEach(name => {
-                queryParams.push(`%${name}%`);
+            const nameConditions = params.names.map(name => {
+                values.push(`%${name}%`);
+                return `(product_name LIKE ? OR brand LIKE ?)`;
             });
+            conditions.push(`(${nameConditions.join(' AND ')})`);
+            // 각 검색어에 대해 values를 한 번 더 추가 (brand LIKE 조건을 위해)
+            params.names.forEach(name => values.push(`%${name}%`));
         }
 
+        // 가격 범위 조건 추가
         if (params.minPrice) {
-            query += " AND sale_price >= ?";
-            queryParams.push(parseInt(params.minPrice));
+            conditions.push('sale_price >= ?');
+            values.push(params.minPrice);
         }
-
         if (params.maxPrice) {
-            query += " AND sale_price <= ?";
-            queryParams.push(parseInt(params.maxPrice));
+            conditions.push('sale_price <= ?');
+            values.push(params.maxPrice);
         }
 
-        query += " ORDER BY product_no DESC LIMIT ? OFFSET ?";
-        queryParams.push(pageSize);
-        queryParams.push((page - 1) * pageSize);
+        // 품절 상품 제외 조건 추가
+        if (params.excludeSoldOut) {
+            conditions.push('(stock_number IS NULL OR stock_number != "1")');
+        }
 
-        db.all(query, queryParams, (err, rows) => {
-            if (err) reject(err);
-            else resolve(rows);
+        const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
+        const query = `
+            SELECT *
+            FROM products
+            ${whereClause}
+            ORDER BY register_date DESC
+            LIMIT ? OFFSET ?
+        `;
+
+        values.push(pageSize, offset);
+
+        db.all(query, values, (err, rows) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve(rows);
         });
     });
 }

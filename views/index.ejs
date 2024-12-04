@@ -10,6 +10,9 @@
             margin: 0;
             padding: 20px;
             background-color: #f5f5f5;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 100px;
         }
         .container {
             max-width: 1200px;
@@ -17,44 +20,176 @@
         }
         .search-container {
             background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
             margin-bottom: 30px;
         }
         .search-form {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            align-items: end;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
         .search-group {
             display: flex;
             flex-direction: column;
+            gap: 8px;
         }
         .search-group label {
             font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
         }
-        .search-group input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+        .search-group input[type="text"],
+        .search-group input[type="number"] {
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
             font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        .search-group input[type="text"]:focus,
+        .search-group input[type="number"]:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+            outline: none;
+        }
+        .price-inputs {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .price-inputs input {
+            flex: 1;
+        }
+        .price-inputs span {
+            color: #666;
+            font-size: 14px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
         }
         .search-button {
             background-color: #4CAF50;
             color: white;
-            padding: 12px 20px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
             cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s;
+            transition: background-color 0.2s ease;
+            width: 100%;
+            margin-top: 8px;
         }
         .search-button:hover {
-            background-color: #45a049;
+            background-color: #43a047;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .reset-button {
+            background-color: #f5f5f5;
+            color: #666;
+            padding: 12px 24px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex: 1;
+        }
+        .reset-button:hover {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            flex: 2;
+        }
+        .submit-button:hover {
+            background-color: #43a047;
+        }
+        .search-terms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .search-term {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .search-term button {
+            background: none;
+            border: none;
+            color: #2e7d32;
+            cursor: pointer;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+        .add-search-term {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .add-search-term input {
+            flex: 1;
+        }
+        .add-search-term button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .add-search-term button:hover {
+            background-color: #43a047;
+        }
+        .search-summary {
+            color: #666;
+            font-size: 14px;
+            margin-top: 16px;
+            text-align: right;
         }
         .products-grid {
             display: grid;
@@ -64,9 +199,19 @@
         .product-card {
             background-color: white;
             border-radius: 10px;
-            overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .product-card.sold-out {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        .product-card.sold-out .product-image {
+            opacity: 0.6;
+        }
+        .product-card.sold-out .product-info {
+            opacity: 0.7;
         }
         .product-card:hover {
             transform: translateY(-5px);
@@ -122,54 +267,18 @@
             color: #666;
             grid-column: 1 / -1;
         }
-        .search-terms {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .search-term {
-            display: flex;
-            align-items: center;
-            background-color: #f0f0f0;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-        .search-term button {
-            background: none;
-            border: none;
-            color: #666;
-            margin-left: 8px;
-            cursor: pointer;
-            padding: 0 5px;
-        }
-        .search-term button:hover {
-            color: #e44d26;
-        }
-        .add-term-button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-left: 10px;
-        }
-        .add-term-button:hover {
-            background-color: #45a049;
-        }
-        .search-name-group {
-            display: flex;
-            align-items: flex-end;
-            gap: 10px;
-        }
         .pagination {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            padding: 20px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 5px;
-            margin: 20px 0;
+            gap: 10px;
         }
         .pagination button {
             padding: 8px 12px;
@@ -199,6 +308,17 @@
             font-size: 14px;
             margin-bottom: 10px;
         }
+        .sold-out-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 1;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -208,69 +328,41 @@
         <div class="search-container">
             <form class="search-form" action="/" method="GET" id="searchForm">
                 <div class="search-group">
-                    <label>검색어</label>
-                    <div class="search-terms" id="searchTerms">
-                        <% (searchParams.names || []).forEach((term, index) => { %>
+                    <label for="searchTerms">검색어</label>
+                    <div id="searchTermsContainer" class="search-terms">
+                        <% searchParams.names && searchParams.names.forEach(function(term) { %>
                             <div class="search-term">
                                 <%= term %>
-                                <button type="button" onclick="removeTerm(<%= index %>)">×</button>
+                                <button type="button" onclick="removeTerm('<%= term %>')">×</button>
                                 <input type="hidden" name="names" value="<%= term %>">
                             </div>
-                        <% }) %>
+                        <% }); %>
                     </div>
-                    <div class="search-name-group">
-                        <input type="text" id="newSearchTerm" placeholder="검색어 입력" style="flex-grow: 1;">
-                        <button type="button" class="add-term-button" onclick="addSearchTerm()">추가</button>
+                    <div class="add-search-term">
+                        <input type="text" id="newSearchTerm" placeholder="검색어를 입력하세요">
+                        <button type="button" onclick="addSearchTerm()">추가</button>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="excludeSoldOut" name="excludeSoldOut" value="true" <%= searchParams.excludeSoldOut === 'true' ? 'checked' : '' %>>
+                        <label for="excludeSoldOut">품절 상품 제외</label>
                     </div>
                 </div>
                 <div class="search-group">
-                    <label for="minPrice">최소 가격</label>
-                    <input type="number" id="minPrice" name="minPrice" placeholder="최소 가격" 
-                           value="<%= searchParams.minPrice %>">
-                </div>
-                <div class="search-group">
-                    <label for="maxPrice">최대 가격</label>
-                    <input type="number" id="maxPrice" name="maxPrice" placeholder="최대 가격" 
-                           value="<%= searchParams.maxPrice %>">
-                </div>
-                <div class="search-group">
-                    <button type="submit" class="search-button">검색</button>
+                    <label>가격 범위</label>
+                    <div class="price-inputs">
+                        <input type="number" id="minPrice" name="minPrice" placeholder="최소 가격" value="<%= searchParams.minPrice %>">
+                        <span>~</span>
+                        <input type="number" id="maxPrice" name="maxPrice" placeholder="최대 가격" value="<%= searchParams.maxPrice %>">
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="reset-button" onclick="resetSearch()">초기화</button>
+                        <button type="submit" class="submit-button">검색</button>
+                    </div>
                 </div>
             </form>
-            
-            <% if (pagination) { %>
-                <div class="page-info">
-                    전체 <%= pagination.totalCount %>개 상품 중 <%= (pagination.currentPage - 1) * pagination.pageSize + 1 %>-<%= Math.min(pagination.currentPage * pagination.pageSize, pagination.totalCount) %>개 표시
-                </div>
-                <div class="pagination">
-                    <button 
-                        onclick="changePage(1)" 
-                        <%= pagination.currentPage === 1 ? 'disabled' : '' %>
-                    >처음</button>
-                    
-                    <button 
-                        onclick="changePage(<%= pagination.currentPage - 1 %>)" 
-                        <%= pagination.currentPage === 1 ? 'disabled' : '' %>
-                    >이전</button>
-                    
-                    <% for(let i = Math.max(1, pagination.currentPage - 2); i <= Math.min(pagination.totalPages, pagination.currentPage + 2); i++) { %>
-                        <button 
-                            onclick="changePage(<%= i %>)"
-                            class="<%= pagination.currentPage === i ? 'active' : '' %>"
-                        ><%= i %></button>
-                    <% } %>
-                    
-                    <button 
-                        onclick="changePage(<%= pagination.currentPage + 1 %>)"
-                        <%= pagination.currentPage === pagination.totalPages ? 'disabled' : '' %>
-                    >다음</button>
-                    
-                    <button 
-                        onclick="changePage(<%= pagination.totalPages %>)"
-                        <%= pagination.currentPage === pagination.totalPages ? 'disabled' : '' %>
-                    >마지막</button>
-                </div>
-            <% } %>
+            <div class="search-summary">
+                전체 <%= pagination.totalCount %>개 상품 중 <%= products.length %>개 표시
+            </div>
         </div>
 
         <div class="products-grid">
@@ -281,8 +373,11 @@
                 </div>
             <% } %>
             
-            <% products.forEach(product => { %>
-                <div class="product-card">
+            <% products.forEach(function(product) { %>
+                <div class="product-card <%= product.stock_number === '1' ? 'sold-out' : '' %>">
+                    <% if (product.stock_number === '1') { %>
+                        <div class="sold-out-label">품절</div>
+                    <% } %>
                     <a href="<%= product.link %>" target="_blank" class="product-link">
                         <img src="<%= product.image_url %>" alt="<%= product.product_name %>" class="product-image">
                         <div class="product-info">
@@ -303,6 +398,40 @@
                 </div>
             <% }); %>
         </div>
+        
+        <% if (pagination) { %>
+            <div class="page-info">
+                전체 <%= pagination.totalCount %>개 상품 중 <%= (pagination.currentPage - 1) * pagination.pageSize + 1 %>-<%= Math.min(pagination.currentPage * pagination.pageSize, pagination.totalCount) %>개 표시
+            </div>
+            <div class="pagination">
+                <button 
+                    onclick="changePage(1)" 
+                    <%= pagination.currentPage === 1 ? 'disabled' : '' %>
+                >처음</button>
+                
+                <button 
+                    onclick="changePage(<%= pagination.currentPage - 1 %>)" 
+                    <%= pagination.currentPage === 1 ? 'disabled' : '' %>
+                >이전</button>
+                
+                <% for(let i = Math.max(1, pagination.currentPage - 2); i <= Math.min(pagination.totalPages, pagination.currentPage + 2); i++) { %>
+                    <button 
+                        onclick="changePage(<%= i %>)"
+                        class="<%= pagination.currentPage === i ? 'active' : '' %>"
+                    ><%= i %></button>
+                <% } %>
+                
+                <button 
+                    onclick="changePage(<%= pagination.currentPage + 1 %>)"
+                    <%= pagination.currentPage === pagination.totalPages ? 'disabled' : '' %>
+                >다음</button>
+                
+                <button 
+                    onclick="changePage(<%= pagination.totalPages %>)"
+                    <%= pagination.currentPage === pagination.totalPages ? 'disabled' : '' %>
+                >마지막</button>
+            </div>
+        <% } %>
     </div>
 
     <script>
@@ -311,14 +440,23 @@
             const term = input.value.trim();
             
             if (term) {
-                const searchTerms = document.getElementById('searchTerms');
-                const termCount = searchTerms.getElementsByClassName('search-term').length;
+                const searchTerms = document.getElementById('searchTermsContainer');
+                
+                // 중복 검색어 체크
+                const existingTerms = searchTerms.getElementsByClassName('search-term');
+                for (let i = 0; i < existingTerms.length; i++) {
+                    if (existingTerms[i].querySelector('input[name="names"]').value === term) {
+                        alert('이미 추가된 검색어입니다.');
+                        input.value = '';
+                        return;
+                    }
+                }
                 
                 const termDiv = document.createElement('div');
                 termDiv.className = 'search-term';
                 termDiv.innerHTML = `
                     ${term}
-                    <button type="button" onclick="removeTerm(${termCount})">×</button>
+                    <button type="button" onclick="removeTerm('${term}')">×</button>
                     <input type="hidden" name="names" value="${term}">
                 `;
                 
@@ -327,12 +465,35 @@
             }
         }
 
-        function removeTerm(index) {
-            const searchTerms = document.getElementById('searchTerms');
+        function removeTerm(term) {
+            const searchTerms = document.getElementById('searchTermsContainer');
             const terms = searchTerms.getElementsByClassName('search-term');
-            if (terms[index]) {
-                terms[index].remove();
+            for (let i = 0; i < terms.length; i++) {
+                const termInput = terms[i].querySelector('input[name="names"]');
+                if (termInput && termInput.value === term) {
+                    terms[i].remove();
+                    break;
+                }
             }
+        }
+
+        function resetSearch() {
+            // 검색어 초기화
+            const searchTerms = document.getElementById('searchTermsContainer');
+            searchTerms.innerHTML = '';
+            
+            // 검색어 입력창 초기화
+            document.getElementById('newSearchTerm').value = '';
+            
+            // 가격 범위 초기화
+            document.getElementById('minPrice').value = '';
+            document.getElementById('maxPrice').value = '';
+            
+            // 품절 상품 제외 체크박스 초기화
+            document.getElementById('excludeSoldOut').checked = false;
+
+            // 폼 제출
+            document.getElementById('searchForm').submit();
         }
 
         // Enter 키로 검색어 추가
