@@ -12,7 +12,7 @@ class NewCrawler {
         this.failedItemsLog = path.join(__dirname, 'failed_items.log');
         this.debugLog = path.join(__dirname, 'debug.log');
         this.currentProductLog = null;
-        
+
         // UI에 표시될 파라미터 설정
         this.parameters = [
             {
@@ -60,15 +60,15 @@ class NewCrawler {
     async writeDebugLog(message, type = 'info') {
         const timestamp = new Date().toISOString();
         const logEntry = `[${timestamp}] [${type}] ${message}\n`;
-        
+
         try {
             await fs.appendFile(this.debugLog, logEntry, 'utf8');
-            
+
             // 현재 상품별 로그 파일이 있다면 그곳에도 기록
             if (this.currentProductLog) {
                 await fs.appendFile(this.currentProductLog, logEntry, 'utf8');
             }
-            
+
             // 콘솔에도 출력
             if (this.logCallback) {
                 this.logCallback(message);
@@ -110,14 +110,14 @@ class NewCrawler {
     async parseProduct($, element) {
         try {
             const $item = $(element);
-            
+
             // 앵커 박스에서 상품 번호 추출 시도
             const anchorBox = $item.find('a[name^="anchorBoxName"]');
             const productNo = anchorBox.attr('name')?.replace('anchorBoxName_', '');
-            
+
             // 상품별 로그 파일 시작
             await this.startProductLog(productNo);
-            
+
             // 전체 HTML 구조 로깅
             // await this.writeDebugLog('=== DOM 구조 시작 ===');
             // await this.writeDebugLog($item.html());
@@ -157,7 +157,7 @@ class NewCrawler {
             // 이미지 URL 추출 시도 - 수정된 부분
             const prdThumbEl = $item.find('img.prdthumb');
             let imageUrl = prdThumbEl.attr('src') || '';
-            
+
             if (imageUrl && !imageUrl.startsWith('http')) {
                 imageUrl = imageUrl.startsWith('//') ? 'https:' + imageUrl : 'https://vintagetalk.co.kr' + imageUrl;
             }
@@ -167,10 +167,10 @@ class NewCrawler {
             const sizeEl = $item.find('li:contains("SIZE")');
             const lastLiEl = $item.find('li').last();
             const measurementText = sizeEl.text().trim() || lastLiEl.text().trim();
-            
+
             const measurements = {};
             const measurementParts = measurementText.split(' ');
-            
+
             // forEach를 for...of로 변경
             const measurementKeys = ['어깨', '가슴', '소매', '총장'];
             for (const key of measurementKeys) {
@@ -186,7 +186,21 @@ class NewCrawler {
             const link = anchorBox.attr('href');
             const fullLink = link ? `${this.baseUrl}${link}` : '';
             // await this.writeDebugLog('링크: ' + fullLink);
-
+            // 상품 상세 페이지 크롤링
+            let stock_number = 0;
+            if (imageUrl) {
+                try {
+                    const detailUrl = fullLink;
+                    const detailResponse = await axios.get(detailUrl);
+                    const $detail = cheerio.load(detailResponse.data);
+                    
+                    // 품절 이미지 확인
+                    const soldOutImg = $detail('.xans-element-.xans-product.xans-product-detail .icon img[alt="품절"]');
+                    stock_number = soldOutImg.length > 0 ? 1 : 0;
+                } catch (error) {
+                    await this.writeDebugLog(`상세 페이지 크롤링 실패: ${error.message}`, 'error');
+                }
+            }
             const result = {
                 product_no: parseInt(productNo),
                 product_name: productName,
@@ -204,7 +218,7 @@ class NewCrawler {
                 link: fullLink,
                 register_date: new Date().toISOString(),
                 hit_count: 0,
-                stock_number: ''
+                stock_number: stock_number
             };
 
             // 최종 결과 로깅
@@ -241,39 +255,39 @@ class NewCrawler {
     async crawlPage(params, page) {
         try {
             this.log(`페이지 ${page} 크롤링 중...`);
-            
+
             const url = `${this.baseUrl}?page=${page}&category_no=${params.display_group}`;
             const response = await axios.get(url);
             const $ = cheerio.load(response.data);
-            
+
             // Find all product items in the page
             const productItems = $('.xans-product-normalpackage .PrdItem');
             const totalItems = productItems.length;
             let savedCount = 0;
             let existingCount = 0;
-            
+
             this.log(`페이지 ${page}에서 ${totalItems}개의 상품 발견`);
-            
+
             for (let i = 0; i < productItems.length; i++) {
                 if (this.isStopped) {
                     this.log('크롤링이 중지되었습니다.');
                     break;
                 }
-                
+
                 try {
                     const product = await this.parseProduct($, productItems[i]);
                     if (!product.product_no) {
                         this.log('상품 번호가 없는 항목 건너뜀');
                         continue;
                     }
-                    
+
                     const exists = await db.checkProductExists(product.product_no);
                     if (exists) {
                         existingCount++;
                         this.log(`이미 존재하는 상품: ${product.product_no} (${product.product_name})`);
                         continue;
                     }
-                    
+
                     const result = await db.saveProduct(product);
                     if (result.saved) {
                         savedCount++;
@@ -283,16 +297,16 @@ class NewCrawler {
                     this.log(`상품 처리 실패 (${error.message})`);
                 }
             }
-            
+
             const summary = {
                 totalItems,
                 savedCount,
                 existingCount,
                 failedCount: totalItems - (savedCount + existingCount)
             };
-            
+
             this.log(`페이지 ${page} 완료 - 총 ${summary.totalItems}개 중 ${summary.savedCount}개 저장, ${summary.existingCount}개 기존 상품, ${summary.failedCount}개 실패`);
-            
+
             return summary;
         } catch (error) {
             this.log(`페이지 ${page} 크롤링 실패: ${error.message}`);
@@ -309,30 +323,30 @@ class NewCrawler {
         try {
             this.isStopped = false;
             this.log('크롤링 시작');
-            
+
             let totalStats = {
                 totalItems: 0,
                 savedCount: 0,
                 existingCount: 0,
                 failedCount: 0
             };
-            
+
             for (let page = params.start_page; page <= params.end_page; page++) {
                 if (this.isStopped) break;
-                
+
                 const pageStats = await this.crawlPage(params, page);
                 totalStats.totalItems += pageStats.totalItems;
                 totalStats.savedCount += pageStats.savedCount;
                 totalStats.existingCount += pageStats.existingCount;
                 totalStats.failedCount += pageStats.failedCount;
             }
-            
+
             this.log('크롤링 완료');
             this.log(`총 결과: ${totalStats.totalItems}개 상품 중`);
             this.log(`- ${totalStats.savedCount}개 신규 저장`);
             this.log(`- ${totalStats.existingCount}개 기존 상품`);
             this.log(`- ${totalStats.failedCount}개 처리 실패`);
-            
+
             return totalStats;
         } catch (error) {
             this.log(`크롤링 중 오류 발생: ${error.message}`);
