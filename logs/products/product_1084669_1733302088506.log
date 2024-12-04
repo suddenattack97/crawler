@@ -1,0 +1,87 @@
+[2024-12-04T08:48:08.506Z] [info] === DOM 구조 시작 ===
+[2024-12-04T08:48:08.512Z] [info] 
+	<a href="/product/린넨-베이직-자켓-남자-m/1084669/category/2460/display/1/" name="anchorBoxName_1084669" class="-linkBtn"></a>
+    <div class="saleP"></div>
+    <div class="thumbnail">
+        <div class="-soldoutmark"><img src="/_/item/soldout.png"></div>
+        <a href="/product/린넨-베이직-자켓-남자-m/1084669/category/2460/display/1/" name="anchorBoxName_1084669"><div class="brandimgs _maintab2"><img src="/web/brand_logo/item/JPN.png"></div>
+<img class="prdthumb" src="//vintagetalk.co.kr/web/product/medium/나52071_1.jpg" id="eListPrdImage1084669_1" alt="린넨 베이직 자켓 남자 M 빈티지톡"></a>
+    </div>
+    <div class="icon" style="display: none;">
+        <div class="promotion">       </div>
+        <div class="button">
+            <div class="option"></div> <img src="/web/upload/icon_202108191019158100.png" onclick="category_add_basket('1084669','2460', '1', 'A0000', false, '1', 'P00CJSOB', 'A', 'T', '1');" alt="장바구니 담기" class="ec-admin-icon cart"> <img src="/web/upload/icon_202108191002024000.png" onclick="zoom('1084669', '2460', '1','', '');" style="cursor:pointer" alt="상품 큰 이미지 보기">        </div>
+    </div>
+    
+    <div class="dispBrand">JPN</div>
+    
+    <div class="description" ec-data-custom="" ec-data-price="69000">
+        <div class="color displaynone">
+                    </div>
+        <strong class="name"><a href="/product/린넨-베이직-자켓-남자-m/1084669/category/2460/display/1/" class=""><span class="title displaynone"><span style="font-size:14px;color:#222222;">상품명</span> :</span> <span style="font-size:14px;color:#222222;">린넨 베이직 자켓 남자 M</span></a></strong>
+        <ul class="xans-element- xans-product xans-product-listitem spec"><li class=" xans-record-">
+<strong class="title displaynone"><span style="font-size:20px;color:#111111;font-weight:bold;">브랜드</span> :</strong> <span style="font-size:20px;color:#111111;font-weight:bold;">JPN</span></li>
+<li class=" xans-record-">
+<strong class="title displaynone"><span style="font-size:14px;color:#111111;font-weight:bold;">판매가</span> :</strong> <span style="font-size:14px;color:#111111;font-weight:bold;">69,000원</span><span id="span_product_tax_type_text" style=""> </span></li>
+<li class=" xans-record-">
+<strong class="title "><span style="font-size:14px;color:#f05b41;font-weight:bold;">할인판매가</span> :</strong> <span style="font-size:14px;color:#f05b41;font-weight:bold;">20,700원</span></li>
+<li class=" xans-record-">
+<strong class="title displaynone"> :</strong> </li>
+<li class=" xans-record-">
+<strong class="title displaynone"><span style="font-size:14px;color:#222222;">실측사이즈 cm</span> :</strong> <span style="font-size:14px;color:#222222;">어깨 : 46 가슴 : 56 소매 : 59 총기장 : 78</span></li>
+</ul>
+<div class="bottom-icon-btns">
+            <div class="wish"><img src="/web/upload/icon_202108191019194800.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="1084669" categoryno="2460" icon_status="off" login_status="T" individual-set="F"></div>
+            <div class="cart"><img src="/web/upload/icon_202108191019158100.png" onclick="category_add_basket('1084669','2460', '1', 'A0000', false, '1', 'P00CJSOB', 'A', 'T', '1');" alt="장바구니 담기" class="ec-admin-icon cart"></div>
+            <div class="like"><div class="LikeButton likePrd likePrd_1084669"><button type="button"><img src="//img.echosting.cafe24.com/skin/admin_ko_KR/product/ico_likeit.png" class="likePrdIcon" product_no="1084669" category_no="2460" icon_status="off" alt="좋아요 등록 전"><span>LIKE</span><strong><span class="likePrdCount likePrdCount_1084669">0</span></strong></button></div></div>
+            <div class="zoom"><img src="/web/upload/icon_202108191002024000.png" onclick="zoom('1084669', '2460', '1','', '');" style="cursor:pointer" alt="상품 큰 이미지 보기"></div>
+        </div>
+
+    </div>
+
+
+    <span class="chk"><input type="checkbox" class="ProductCompareClass xECPCNO_1084669 displaynone"></span>
+
+[2024-12-04T08:48:08.525Z] [info] === DOM 구조 끝 ===
+
+[2024-12-04T08:48:08.534Z] [info] 상품명: 린넨 베이직 자켓 남자 M
+[2024-12-04T08:48:08.541Z] [info] 가격: 69000
+[2024-12-04T08:48:08.553Z] [info] 브랜드: JPN
+[2024-12-04T08:48:08.565Z] [info] 할인가: 20700
+[2024-12-04T08:48:08.580Z] [info] 제조국: 
+[2024-12-04T08:48:08.585Z] [info] 이미지 URL: https://vintagetalk.co.kr/web/product/medium/나52071_1.jpg
+[2024-12-04T08:48:08.596Z] [info] 치수 어깨: 46
+[2024-12-04T08:48:08.603Z] [info] 치수 가슴: 56
+[2024-12-04T08:48:08.616Z] [info] 치수 소매: 59
+[2024-12-04T08:48:08.634Z] [info] 링크: https://vintagetalk.co.kr/product/list.html/product/린넨-베이직-자켓-남자-m/1084669/category/2460/display/1/
+[2024-12-04T08:48:08.644Z] [info] === 파싱 결과 ===
+[2024-12-04T08:48:08.648Z] [info] {
+  "product_no": 1084669,
+  "product_name": "린넨 베이직 자켓 남자 M",
+  "brand": "JPN",
+  "price": 69000,
+  "sale_price": 20700,
+  "made_in": "",
+  "measurements": "{\"shoulder\":46,\"chest\":56,\"sleeve\":59,\"total_length\":\"\"}",
+  "image_url": "https://vintagetalk.co.kr/web/product/medium/나52071_1.jpg",
+  "link": "https://vintagetalk.co.kr/product/list.html/product/린넨-베이직-자켓-남자-m/1084669/category/2460/display/1/",
+  "register_date": "2024-12-04T08:48:08.644Z",
+  "hit_count": 0,
+  "stock_number": ""
+}
+[2024-12-04T08:48:08.660Z] [info] === 파싱 결과 끝 ===
+
+[2024-12-04T08:48:08.664Z] [info] === 데이터베이스 저장 전 데이터 ===
+[2024-12-04T08:48:08.668Z] [info] {
+  "product_no": 1084669,
+  "product_name": "린넨 베이직 자켓 남자 M",
+  "brand": "JPN",
+  "price": 69000,
+  "sale_price": 20700,
+  "made_in": "",
+  "measurements": "{\"shoulder\":46,\"chest\":56,\"sleeve\":59,\"total_length\":\"\"}",
+  "image_url": "https://vintagetalk.co.kr/web/product/medium/나52071_1.jpg",
+  "link": "https://vintagetalk.co.kr/product/list.html/product/린넨-베이직-자켓-남자-m/1084669/category/2460/display/1/"
+}
+[2024-12-04T08:48:08.672Z] [info] === 데이터베이스 저장 전 데이터 끝 ===
+

@@ -1,0 +1,70 @@
+[2024-12-04T08:36:42.911Z] [info] === DOM 구조 시작 ===
+[2024-12-04T08:36:42.914Z] [info] 
+	<a href="/product/에드윈-코튼-베이직-팬츠-공용-38cm/1085647/category/2460/display/1/" name="anchorBoxName_1085647" class="-linkBtn"></a>
+    <div class="saleP"></div>
+    <div class="thumbnail">
+        <div class="-soldoutmark"><img src="/_/item/soldout.png"></div>
+        <a href="/product/에드윈-코튼-베이직-팬츠-공용-38cm/1085647/category/2460/display/1/" name="anchorBoxName_1085647"><div class="brandimgs _maintab2"><img src="/web/brand_logo/item/EDWIN.png"></div>
+<img class="prdthumb" src="//vintagetalk.co.kr/web/product/medium/긴10364_1.jpg" id="eListPrdImage1085647_1" alt="에드윈 코튼 베이직 팬츠 공용 38cm 빈티지톡"></a>
+    </div>
+    <div class="icon" style="display: none;">
+        <div class="promotion">       </div>
+        <div class="button">
+            <div class="option"></div> <img src="/web/upload/icon_202108191019158100.png" onclick="category_add_basket('1085647','2460', '1', 'A0000', false, '1', 'P00CJTZR', 'A', 'T', '1');" alt="장바구니 담기" class="ec-admin-icon cart"> <img src="/web/upload/icon_202108191002024000.png" onclick="zoom('1085647', '2460', '1','', '');" style="cursor:pointer" alt="상품 큰 이미지 보기">        </div>
+    </div>
+    
+    <div class="dispBrand">EDWIN</div>
+    
+    <div class="description" ec-data-custom="" ec-data-price="49000">
+        <div class="color displaynone">
+                    </div>
+        <strong class="name"><a href="/product/에드윈-코튼-베이직-팬츠-공용-38cm/1085647/category/2460/display/1/" class=""><span class="title displaynone"><span style="font-size:14px;color:#222222;">상품명</span> :</span> <span style="font-size:14px;color:#222222;">에드윈 코튼 베이직 팬츠 공용 38cm</span></a></strong>
+        <ul class="xans-element- xans-product xans-product-listitem spec"><li class=" xans-record-">
+<strong class="title displaynone"><span style="font-size:20px;color:#111111;font-weight:bold;">브랜드</span> :</strong> <span style="font-size:20px;color:#111111;font-weight:bold;">EDWIN</span></li>
+<li class=" xans-record-">
+<strong class="title displaynone"><span style="font-size:14px;color:#111111;font-weight:bold;">판매가</span> :</strong> <span style="font-size:14px;color:#111111;font-weight:bold;">49,000원</span><span id="span_product_tax_type_text" style=""> </span></li>
+<li class=" xans-record-">
+<strong class="title "><span style="font-size:14px;color:#f05b41;font-weight:bold;">할인판매가</span> :</strong> <span style="font-size:14px;color:#f05b41;font-weight:bold;">4,900원</span></li>
+<li class=" xans-record-">
+<strong class="title displaynone"> :</strong> </li>
+<li class=" xans-record-">
+<strong class="title displaynone"><span style="font-size:14px;color:#222222;">실측사이즈 cm</span> :</strong> <span style="font-size:14px;color:#222222;">허리 : 38 밑위 : 27 허벅지 : 26 밑단 : 17 총기장 : 84</span></li>
+</ul>
+<div class="bottom-icon-btns">
+            <div class="wish"><img src="/web/upload/icon_202108191019194800.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="1085647" categoryno="2460" icon_status="off" login_status="T" individual-set="F"></div>
+            <div class="cart"><img src="/web/upload/icon_202108191019158100.png" onclick="category_add_basket('1085647','2460', '1', 'A0000', false, '1', 'P00CJTZR', 'A', 'T', '1');" alt="장바구니 담기" class="ec-admin-icon cart"></div>
+            <div class="like"><div class="LikeButton likePrd likePrd_1085647"><button type="button"><img src="//img.echosting.cafe24.com/skin/admin_ko_KR/product/ico_likeit.png" class="likePrdIcon" product_no="1085647" category_no="2460" icon_status="off" alt="좋아요 등록 전"><span>LIKE</span><strong><span class="likePrdCount likePrdCount_1085647">0</span></strong></button></div></div>
+            <div class="zoom"><img src="/web/upload/icon_202108191002024000.png" onclick="zoom('1085647', '2460', '1','', '');" style="cursor:pointer" alt="상품 큰 이미지 보기"></div>
+        </div>
+
+    </div>
+
+
+    <span class="chk"><input type="checkbox" class="ProductCompareClass xECPCNO_1085647 displaynone"></span>
+
+[2024-12-04T08:36:42.924Z] [info] === DOM 구조 끝 ===
+
+[2024-12-04T08:36:42.927Z] [info] 상품명: 에드윈 코튼 베이직 팬츠 공용 38cm
+[2024-12-04T08:36:42.932Z] [info] 가격: 49000
+[2024-12-04T08:36:42.934Z] [info] 브랜드: EDWIN
+[2024-12-04T08:36:42.937Z] [info] 할인가: 4900
+[2024-12-04T08:36:42.940Z] [info] 제조국: 
+[2024-12-04T08:36:42.943Z] [info] 이미지 URL: 
+[2024-12-04T08:36:42.948Z] [info] 링크: https://vintagetalk.co.kr/product/list.html/product/에드윈-코튼-베이직-팬츠-공용-38cm/1085647/category/2460/display/1/
+[2024-12-04T08:36:42.951Z] [info] === 파싱 결과 ===
+[2024-12-04T08:36:42.954Z] [info] {
+  "product_no": 1085647,
+  "product_name": "에드윈 코튼 베이직 팬츠 공용 38cm",
+  "brand": "EDWIN",
+  "price": 49000,
+  "sale_price": 4900,
+  "made_in": "",
+  "measurements": "{\"shoulder\":\"\",\"chest\":\"\",\"sleeve\":\"\",\"total_length\":\"\"}",
+  "image_url": "",
+  "link": "https://vintagetalk.co.kr/product/list.html/product/에드윈-코튼-베이직-팬츠-공용-38cm/1085647/category/2460/display/1/",
+  "register_date": "2024-12-04T08:36:42.951Z",
+  "hit_count": 0,
+  "stock_number": ""
+}
+[2024-12-04T08:36:42.959Z] [info] === 파싱 결과 끝 ===
+

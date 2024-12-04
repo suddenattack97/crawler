@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빈티지톡 상품 목록</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .search-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            align-items: end;
+        }
+        .search-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .search-group label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .search-group input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .search-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .search-button:hover {
+            background-color: #45a049;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .product-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .product-link:hover {
+            text-decoration: none;
+        }
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-name {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 10px 0;
+            color: #333;
+            height: 40px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        .product-price {
+            font-size: 18px;
+            color: #e44d26;
+            margin: 5px 0;
+        }
+        .product-original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+        }
+        .measurements {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            grid-column: 1 / -1;
+        }
+        .search-terms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .search-term {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .search-term button {
+            background: none;
+            border: none;
+            color: #666;
+            margin-left: 8px;
+            cursor: pointer;
+            padding: 0 5px;
+        }
+        .search-term button:hover {
+            color: #e44d26;
+        }
+        .add-term-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .add-term-button:hover {
+            background-color: #45a049;
+        }
+        .search-name-group {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 20px 0;
+        }
+        .pagination button {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            background-color: white;
+            color: #333;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .pagination button:hover {
+            background-color: #f5f5f5;
+        }
+        .pagination button.active {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+        .pagination button:disabled {
+            background-color: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+        .page-info {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>빈티지톡 상품 목록</h1>
+        
+        <div class="search-container">
+            <form class="search-form" action="/" method="GET" id="searchForm">
+                <div class="search-group">
+                    <label>검색어</label>
+                    <div class="search-terms" id="searchTerms">
+                        <% (searchParams.names || []).forEach((term, index) => { %>
+                            <div class="search-term">
+                                <%= term %>
+                                <button type="button" onclick="removeTerm(<%= index %>)">×</button>
+                                <input type="hidden" name="names" value="<%= term %>">
+                            </div>
+                        <% }) %>
+                    </div>
+                    <div class="search-name-group">
+                        <input type="text" id="newSearchTerm" placeholder="검색어 입력" style="flex-grow: 1;">
+                        <button type="button" class="add-term-button" onclick="addSearchTerm()">추가</button>
+                    </div>
+                </div>
+                <div class="search-group">
+                    <label for="minPrice">최소 가격</label>
+                    <input type="number" id="minPrice" name="minPrice" placeholder="최소 가격" 
+                           value="<%= searchParams.minPrice %>">
+                </div>
+                <div class="search-group">
+                    <label for="maxPrice">최대 가격</label>
+                    <input type="number" id="maxPrice" name="maxPrice" placeholder="최대 가격" 
+                           value="<%= searchParams.maxPrice %>">
+                </div>
+                <div class="search-group">
+                    <button type="submit" class="search-button">검색</button>
+                </div>
+            </form>
+            
+            <% if (pagination) { %>
+                <div class="page-info">
+                    전체 <%= pagination.totalCount %>개 상품 중 <%= (pagination.currentPage - 1) * pagination.pageSize + 1 %>-<%= Math.min(pagination.currentPage * pagination.pageSize, pagination.totalCount) %>개 표시
+                </div>
+                <div class="pagination">
+                    <button 
+                        onclick="changePage(1)" 
+                        <%= pagination.currentPage === 1 ? 'disabled' : '' %>
+                    >처음</button>
+                    
+                    <button 
+                        onclick="changePage(<%= pagination.currentPage - 1 %>)" 
+                        <%= pagination.currentPage === 1 ? 'disabled' : '' %>
+                    >이전</button>
+                    
+                    <% for(let i = Math.max(1, pagination.currentPage - 2); i <= Math.min(pagination.totalPages, pagination.currentPage + 2); i++) { %>
+                        <button 
+                            onclick="changePage(<%= i %>)"
+                            class="<%= pagination.currentPage === i ? 'active' : '' %>"
+                        ><%= i %></button>
+                    <% } %>
+                    
+                    <button 
+                        onclick="changePage(<%= pagination.currentPage + 1 %>)"
+                        <%= pagination.currentPage === pagination.totalPages ? 'disabled' : '' %>
+                    >다음</button>
+                    
+                    <button 
+                        onclick="changePage(<%= pagination.totalPages %>)"
+                        <%= pagination.currentPage === pagination.totalPages ? 'disabled' : '' %>
+                    >마지막</button>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="products-grid">
+            <% if (products.length === 0) { %>
+                <div class="no-results">
+                    <h3>검색 결과가 없습니다</h3>
+                    <p>다른 검색어로 시도해보세요</p>
+                </div>
+            <% } %>
+            
+            <% products.forEach(product => { %>
+                <div class="product-card">
+                    <a href="<%= product.link %>" target="_blank" class="product-link">
+                        <img src="<%= product.image_url %>" alt="<%= product.product_name %>" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name"><%= product.product_name %></div>
+                            <div class="product-price">
+                                <div class="product-original-price">₩<%= product.price.toLocaleString() %></div>
+                                ₩<%= product.sale_price.toLocaleString() %>
+                            </div>
+                            <div class="measurements">
+                                <% const measurements = JSON.parse(product.measurements); %>
+                                어깨: <%= measurements.shoulder %>
+                                가슴: <%= measurements.chest %>
+                                소매: <%= measurements.sleeve %>
+                                총장: <%= measurements.total_length %>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <script>
+        function addSearchTerm() {
+            const input = document.getElementById('newSearchTerm');
+            const term = input.value.trim();
+            
+            if (term) {
+                const searchTerms = document.getElementById('searchTerms');
+                const termCount = searchTerms.getElementsByClassName('search-term').length;
+                
+                const termDiv = document.createElement('div');
+                termDiv.className = 'search-term';
+                termDiv.innerHTML = `
+                    ${term}
+                    <button type="button" onclick="removeTerm(${termCount})">×</button>
+                    <input type="hidden" name="names" value="${term}">
+                `;
+                
+                searchTerms.appendChild(termDiv);
+                input.value = '';
+            }
+        }
+
+        function removeTerm(index) {
+            const searchTerms = document.getElementById('searchTerms');
+            const terms = searchTerms.getElementsByClassName('search-term');
+            if (terms[index]) {
+                terms[index].remove();
+            }
+        }
+
+        // Enter 키로 검색어 추가
+        document.getElementById('newSearchTerm').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addSearchTerm();
+            }
+        });
+
+        function changePage(page) {
+            const form = document.getElementById('searchForm');
+            const pageInput = document.createElement('input');
+            pageInput.type = 'hidden';
+            pageInput.name = 'page';
+            pageInput.value = page;
+            form.appendChild(pageInput);
+            form.submit();
+        }
+    </script>
+</body>
+</html>

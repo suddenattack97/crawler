@@ -1,0 +1,87 @@
+[2024-12-04T08:41:18.918Z] [info] === DOM 구조 시작 ===
+[2024-12-04T08:41:18.925Z] [info] 
+	<a href="/product/노스페이스-울-플란넬-긴팔-셔츠-공용-m/1085466/category/2460/display/1/" name="anchorBoxName_1085466" class="-linkBtn"></a>
+    <div class="saleP"></div>
+    <div class="thumbnail">
+        <div class="-soldoutmark"><img src="/_/item/soldout.png"></div>
+        <a href="/product/노스페이스-울-플란넬-긴팔-셔츠-공용-m/1085466/category/2460/display/1/" name="anchorBoxName_1085466"><div class="brandimgs _maintab2"><img src="/web/brand_logo/item/THE NORTH FACE.png"></div>
+<img class="prdthumb" src="//vintagetalk.co.kr/web/product/medium/나52415_1.jpg" id="eListPrdImage1085466_1" alt="노스페이스 울 플란넬 긴팔 셔츠 공용 M 빈티지톡"></a>
+    </div>
+    <div class="icon" style="display: none;">
+        <div class="promotion">       </div>
+        <div class="button">
+            <div class="option"></div> <img src="/web/upload/icon_202108191019158100.png" onclick="category_add_basket('1085466','2460', '1', 'A0000', false, '1', 'P00CJTSS', 'A', 'T', '1');" alt="장바구니 담기" class="ec-admin-icon cart"> <img src="/web/upload/icon_202108191002024000.png" onclick="zoom('1085466', '2460', '1','', '');" style="cursor:pointer" alt="상품 큰 이미지 보기">        </div>
+    </div>
+    
+    <div class="dispBrand">THE NORTH FACE</div>
+    
+    <div class="description" ec-data-custom="" ec-data-price="74000">
+        <div class="color displaynone">
+                    </div>
+        <strong class="name"><a href="/product/노스페이스-울-플란넬-긴팔-셔츠-공용-m/1085466/category/2460/display/1/" class=""><span class="title displaynone"><span style="font-size:14px;color:#222222;">상품명</span> :</span> <span style="font-size:14px;color:#222222;">노스페이스 울 플란넬 긴팔 셔츠 공용 M</span></a></strong>
+        <ul class="xans-element- xans-product xans-product-listitem spec"><li class=" xans-record-">
+<strong class="title displaynone"><span style="font-size:20px;color:#111111;font-weight:bold;">브랜드</span> :</strong> <span style="font-size:20px;color:#111111;font-weight:bold;">THE NORTH FACE</span></li>
+<li class=" xans-record-">
+<strong class="title displaynone"><span style="font-size:14px;color:#111111;font-weight:bold;">판매가</span> :</strong> <span style="font-size:14px;color:#111111;font-weight:bold;">74,000원</span><span id="span_product_tax_type_text" style=""> </span></li>
+<li class=" xans-record-">
+<strong class="title "><span style="font-size:14px;color:#f05b41;font-weight:bold;">할인판매가</span> :</strong> <span style="font-size:14px;color:#f05b41;font-weight:bold;">51,800원</span></li>
+<li class=" xans-record-">
+<strong class="title displaynone"> :</strong> </li>
+<li class=" xans-record-">
+<strong class="title displaynone"><span style="font-size:14px;color:#222222;">실측사이즈 cm</span> :</strong> <span style="font-size:14px;color:#222222;">어깨 : 41 가슴 : 49 소매 : 61 총기장 : 70</span></li>
+</ul>
+<div class="bottom-icon-btns">
+            <div class="wish"><img src="/web/upload/icon_202108191019194800.png" class="icon_img ec-product-listwishicon" alt="관심상품 등록 전" productno="1085466" categoryno="2460" icon_status="off" login_status="T" individual-set="F"></div>
+            <div class="cart"><img src="/web/upload/icon_202108191019158100.png" onclick="category_add_basket('1085466','2460', '1', 'A0000', false, '1', 'P00CJTSS', 'A', 'T', '1');" alt="장바구니 담기" class="ec-admin-icon cart"></div>
+            <div class="like"><div class="LikeButton likePrd likePrd_1085466"><button type="button"><img src="//img.echosting.cafe24.com/skin/admin_ko_KR/product/ico_likeit.png" class="likePrdIcon" product_no="1085466" category_no="2460" icon_status="off" alt="좋아요 등록 전"><span>LIKE</span><strong><span class="likePrdCount likePrdCount_1085466">0</span></strong></button></div></div>
+            <div class="zoom"><img src="/web/upload/icon_202108191002024000.png" onclick="zoom('1085466', '2460', '1','', '');" style="cursor:pointer" alt="상품 큰 이미지 보기"></div>
+        </div>
+
+    </div>
+
+
+    <span class="chk"><input type="checkbox" class="ProductCompareClass xECPCNO_1085466 displaynone"></span>
+
+[2024-12-04T08:41:18.939Z] [info] === DOM 구조 끝 ===
+
+[2024-12-04T08:41:18.947Z] [info] 상품명: 노스페이스 울 플란넬 긴팔 셔츠 공용 M
+[2024-12-04T08:41:18.971Z] [info] 가격: 74000
+[2024-12-04T08:41:18.983Z] [info] 브랜드: THE NORTH FACE
+[2024-12-04T08:41:18.998Z] [info] 할인가: 51800
+[2024-12-04T08:41:19.002Z] [info] 제조국: 
+[2024-12-04T08:41:19.011Z] [info] 이미지 URL: https://vintagetalk.co.kr/web/product/medium/나52415_1.jpg
+[2024-12-04T08:41:19.024Z] [info] 치수 어깨: 41
+[2024-12-04T08:41:19.028Z] [info] 치수 가슴: 49
+[2024-12-04T08:41:19.158Z] [info] 치수 소매: 61
+[2024-12-04T08:41:19.202Z] [info] 링크: https://vintagetalk.co.kr/product/list.html/product/노스페이스-울-플란넬-긴팔-셔츠-공용-m/1085466/category/2460/display/1/
+[2024-12-04T08:41:19.208Z] [info] === 파싱 결과 ===
+[2024-12-04T08:41:19.222Z] [info] {
+  "product_no": 1085466,
+  "product_name": "노스페이스 울 플란넬 긴팔 셔츠 공용 M",
+  "brand": "THE NORTH FACE",
+  "price": 74000,
+  "sale_price": 51800,
+  "made_in": "",
+  "measurements": "{\"shoulder\":41,\"chest\":49,\"sleeve\":61,\"total_length\":\"\"}",
+  "image_url": "https://vintagetalk.co.kr/web/product/medium/나52415_1.jpg",
+  "link": "https://vintagetalk.co.kr/product/list.html/product/노스페이스-울-플란넬-긴팔-셔츠-공용-m/1085466/category/2460/display/1/",
+  "register_date": "2024-12-04T08:41:19.208Z",
+  "hit_count": 0,
+  "stock_number": ""
+}
+[2024-12-04T08:41:19.249Z] [info] === 파싱 결과 끝 ===
+
+[2024-12-04T08:41:19.254Z] [info] === 데이터베이스 저장 전 데이터 ===
+[2024-12-04T08:41:19.265Z] [info] {
+  "product_no": 1085466,
+  "product_name": "노스페이스 울 플란넬 긴팔 셔츠 공용 M",
+  "brand": "THE NORTH FACE",
+  "price": 74000,
+  "sale_price": 51800,
+  "made_in": "",
+  "measurements": "{\"shoulder\":41,\"chest\":49,\"sleeve\":61,\"total_length\":\"\"}",
+  "image_url": "https://vintagetalk.co.kr/web/product/medium/나52415_1.jpg",
+  "link": "https://vintagetalk.co.kr/product/list.html/product/노스페이스-울-플란넬-긴팔-셔츠-공용-m/1085466/category/2460/display/1/"
+}
+[2024-12-04T08:41:19.284Z] [info] === 데이터베이스 저장 전 데이터 끝 ===
+
