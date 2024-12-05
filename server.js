@@ -44,7 +44,7 @@ app.get('/', async (req, res) => {
         names: req.query.names ? (Array.isArray(req.query.names) ? req.query.names : [req.query.names]) : [],
         minPrice: req.query.minPrice || '',
         maxPrice: req.query.maxPrice || '',
-        excludeSoldOut: req.query.excludeSoldOut === 'true'
+        excludeSoldOut: req.query.excludeSoldOut === undefined ? true : req.query.excludeSoldOut === 'true'
     };
 
     try {

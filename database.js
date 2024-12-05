@@ -153,11 +153,11 @@ function searchProducts(params, callback) {
     const queryParams = [];
 
     if (params.names && params.names.length > 0) {
-        const nameConditions = params.names.map(() => "product_name LIKE ?").join(" AND ");
-        query += ` AND (${nameConditions})`;
-        params.names.forEach(name => {
-            queryParams.push(`%${name}%`);
+        const nameConditions = params.names.map(name => {
+            values.push(`%${name}%`);
+            return `(product_name LIKE ?)`;
         });
+        query += ` AND (${nameConditions.join(' AND ')})`;
     }
 
     if (params.minPrice) {
@@ -185,11 +185,9 @@ function getTotalProductCount(params = {}) {
         if (params.names && params.names.length > 0) {
             const nameConditions = params.names.map(name => {
                 values.push(`%${name}%`);
-                return `(product_name LIKE ? OR brand LIKE ?)`;
+                return `(product_name LIKE ?)`;
             });
             conditions.push(`(${nameConditions.join(' AND ')})`);
-            // 각 검색어에 대해 values를 한 번 더 추가 (brand LIKE 조건을 위해)
-            params.names.forEach(name => values.push(`%${name}%`));
         }
 
         // 가격 범위 조건 추가
@@ -231,11 +229,9 @@ function getProductsWithPaging(page = 1, pageSize = 20, params = {}) {
         if (params.names && params.names.length > 0) {
             const nameConditions = params.names.map(name => {
                 values.push(`%${name}%`);
-                return `(product_name LIKE ? OR brand LIKE ?)`;
+                return `(product_name LIKE ?)`;
             });
             conditions.push(`(${nameConditions.join(' AND ')})`);
-            // 각 검색어에 대해 values를 한 번 더 추가 (brand LIKE 조건을 위해)
-            params.names.forEach(name => values.push(`%${name}%`));
         }
 
         // 가격 범위 조건 추가
